@@ -1,0 +1,49 @@
+{
+  "name": "kevin-cli",
+  "version": "1.0.0",
+  "description": "my local tools",
+  "main": "build/cli.js",
+  "types": "build/cli.d.ts",
+  "bin": {
+    "@kwburnett/kevin": "bin/kevin",
+    "kevin": "bin/kevin"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --config jest.config.js"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "kwburnett@gmail.com",
+  "license": "ISC",
+  "files": [
+    "bin",
+    "build"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/inquirer": "^7.3.0",
+    "@types/jest": "^26.0.9",
+    "@types/node": "^14.0.27",
+    "@types/react": "^16.9.46",
+    "@types/yargs": "^15.0.5",
+    "babel-jest": "^26.3.0",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.3.0",
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "esm": "^3.2.25",
+    "ink": "^3.0.3",
+    "react": "^16.13.1",
+    "yargs": "^15.4.1"
+  }
+}
