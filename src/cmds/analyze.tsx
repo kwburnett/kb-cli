@@ -1,24 +1,20 @@
 import fs from 'fs';
 import { render } from 'ink';
-import React from 'react';
-import { Argv } from 'yargs';
+import React, { ReactElement } from 'react';
 import Analysis, { PostmanRunnerExport } from '../ui/Analysis';
 import Error from '../ui/Error';
 
-export const command = 'analyze';
-export const desc = 'Run analysis on a Postman export';
-export const builder = (yargs: Argv<{}>): void => {
-	yargs.positional('file', {
-		alias: 'f',
-		describe: 'The file to analyze',
-		type: 'string',
+export const command = 'analyze <files..>';
+export const desc = 'Run analysis on Postman exports';
+export const handler = (argv: { files: string[] }) => {
+	const analyses: ReactElement[] = [];
+	argv.files.forEach((file) => {
+		if (!fs.existsSync(file)) {
+			render(<Error>{`The file '${file}' does not exist.`}</Error>);
+			return;
+		}
+		const testData = JSON.parse(fs.readFileSync(file, 'utf8')) as PostmanRunnerExport;
+		analyses.push(<Analysis data={testData} key={file} />);
 	});
-};
-export const handler = (argv: { file: string }) => {
-	if (!fs.existsSync(argv.file)) {
-		render(<Error>{`The file '${argv.file}' does not exist.`}</Error>);
-		return;
-	}
-	const testData = JSON.parse(fs.readFileSync(argv.file, 'utf8')) as PostmanRunnerExport;
-	render(<Analysis data={testData} />);
+	render(analyses as unknown as ReactElement);
 };
