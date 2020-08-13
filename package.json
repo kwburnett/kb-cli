@@ -5,8 +5,8 @@
   "main": "build/cli.js",
   "types": "build/cli.d.ts",
   "bin": {
-    "@kwburnett/kevin": "bin/kevin",
-    "kevin": "bin/kevin"
+    "@kwburnett/kb": "bin/kb",
+    "kb": "bin/kb"
   },
   "scripts": {
     "build": "tsc",
