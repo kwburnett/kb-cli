@@ -1,3 +1,3 @@
 import yargs from 'yargs';
 
-yargs.commandDir('cmds').demandCommand().help().argv;
+yargs.command(require('./default')).commandDir('cmds').demandCommand().help().argv;
